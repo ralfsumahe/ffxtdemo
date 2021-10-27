@@ -1,6 +1,7 @@
 package com.example.demo.comtest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.util.function.Consumer;
@@ -100,9 +101,9 @@ public class RunCmdUtil {
                         out.println(line);
                     }
                     if (this.consumerPrint != null) {
-                        consumerPrint.accept(line + "===");
+                        consumerPrint.accept(line + "\n");
                     }
-                    resb.append(line + "===");
+                    resb.append(line + "\n");
                     line = bfr.readLine();
                 }
             } catch (IOException e) {
@@ -113,7 +114,20 @@ public class RunCmdUtil {
 
 
     public static void main(String[] args) {
-        RunCmdUtil.exec("D:\\福信富通\\aboot-tools-2020.09.10-win-x64_old\\adownload.exe -p COM3 -s 115200 D:\\福信富通\\aboot-tools-2020.09.10-win-x64_old\\test.zip", new File("D:\\aaa"), true);
+        RunCmdUtil.exec("D:\\福信富通\\aboot-tools-2020.09.10-win-x64_old\\adownload.exe -p COM3 -s 115200 -q D:\\福信富通\\aboot-tools-2020.09.10-win-x64_old\\test.zip", new File("D:\\aaa"), true, printstr -> {
+            try {
+                FileUtils.write(new File("d:/aa.txt"), printstr, "utf-8", true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+//        RunCmdUtil.exec("curl http://www.baidu.com", new File("D:\\aaa"), true, printstr -> {
+//            try {
+//                FileUtils.write(new File("d:/aa.txt"), printstr, "utf-8", true);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        });
     }
 
 }

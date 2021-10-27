@@ -22,10 +22,10 @@ public class DownloadCom {
     }
 
     public static void download() {
-        String portName = SerialPortList.getPortNames()[0];
+//        String portName = SerialPortList.getPortNames()[0];
 //        System.out.println(portName);
-        exe(new String[]{"D:\\福信富通\\aboot-tools-2020.09.10-win-x64_old\\adownload.exe", "-p", portName, "-s", "115200", "D:\\福信富通\\aboot-tools-2020.09.10-win-x64_old\\test.zip"});
-//        exe(new String[]{"curl", "https://www.csdn.net/"});
+//        exe(new String[]{"D:\\福信富通\\aboot-tools-2020.09.10-win-x64_old\\adownload.exe", "-p", portName, "-s", "115200", "D:\\福信富通\\aboot-tools-2020.09.10-win-x64_old\\test.zip"});
+        exe(new String[]{"curl", "https://www.csdn.net/"});
 //        exe(new String[]{"D:\\apache-tomcat-9.0.50\\bin\\startup.bat"});
     }
 
@@ -35,6 +35,8 @@ public class DownloadCom {
         BufferedReader reader = null;
         try {
             p = process.start();
+            System.out.println(p.pid());
+            p.destroy();
             reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
             while ((line = reader.readLine()) != null) {

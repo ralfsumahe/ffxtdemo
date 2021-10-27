@@ -7,18 +7,18 @@ import static jssc.SerialPort.*;
 
 public class WRCom {
     public static void main(String[] args) {
-        write();
-//        read();
+//        write();
+        read();
     }
 
     public static void read() {
-        SerialPort port = new SerialPort("COM5");
         try {
+            SerialPort port = new SerialPort("COM12");
             port.openPort();
             port.setParams(BAUDRATE_9600, DATABITS_8, STOPBITS_1, PARITY_NONE);
             // port.setParams(9600, 8, 1, 0); // alternate technique
-
-            System.out.println(port.readString());
+            byte[] bytes = port.readBytes(10000);
+            System.out.println(new String(bytes));
             port.closePort();
         } catch (SerialPortException e) {
             e.printStackTrace();
@@ -27,7 +27,7 @@ public class WRCom {
     }
 
     public static void write() {
-        SerialPort port = new SerialPort("COM4");
+        SerialPort port = new SerialPort("COM12");
         try {
             port.openPort();
             port.setParams(BAUDRATE_9600, DATABITS_8, STOPBITS_1, PARITY_NONE);
