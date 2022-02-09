@@ -35,7 +35,7 @@ public class DownloadCom {
         BufferedReader reader = null;
         try {
             p = process.start();
-            System.out.println(p.pid());
+//            System.out.println(p.pid());
             p.destroy();
             reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
