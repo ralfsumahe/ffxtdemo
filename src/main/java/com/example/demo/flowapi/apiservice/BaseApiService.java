@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2022/2/16 18:26
  */
 @Slf4j
-public abstract class BaseApiService<P, R> implements IApiService<P, R> {
+public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> {
     @Autowired
     private ApiDaoManager apiDaoManager;
 
@@ -24,7 +24,7 @@ public abstract class BaseApiService<P, R> implements IApiService<P, R> {
      * @return
      */
     @Override
-    public R getResult(ApiConfig config, P p) {
+    public R process(ApiConfig config, P p) {
         String name = this.getClass().getAnnotation(ApiService.class).name();
         log.info(name + "调用开始");
         IApiDao apidao = apiDaoManager.getApiDao(config);

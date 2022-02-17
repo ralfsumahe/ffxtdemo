@@ -3,6 +3,7 @@ package com.example.demo.flowapi.apiservice;
 import cn.hutool.json.JSONObject;
 import com.example.demo.flowapi.ability.vo.CardStatusParam;
 import com.example.demo.flowapi.ability.vo.CardStatusResult;
+import com.example.demo.flowapi.ability.vo.CardStatusResult2;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @ApiService(eid = "eid", name = "卡状态查询服务")
 @Component
-public class CardStatusApiService extends BaseApiService<CardStatusParam, CardStatusResult> {
+public class CardStatusApiService extends BaseApiService<CardStatusParam, CardStatusResult, CardStatusResult2> {
 
     /**
      * 将json转成参数
@@ -22,5 +23,20 @@ public class CardStatusApiService extends BaseApiService<CardStatusParam, CardSt
     @Override
     public CardStatusParam getParams(JSONObject jsonObject) {
         return new CardStatusParam().setCNo(jsonObject.getStr("cNo"));
+    }
+
+    /**
+     * 结果修改
+     *
+     * @param cardStatusResult
+     * @return
+     */
+    @Override
+    public CardStatusResult2 getResult(CardStatusResult cardStatusResult) {
+        if (cardStatusResult.getStatus() == 1) {
+            return new CardStatusResult2().setStatus("成功");
+        } else {
+            return new CardStatusResult2().setStatus("失败");
+        }
     }
 }

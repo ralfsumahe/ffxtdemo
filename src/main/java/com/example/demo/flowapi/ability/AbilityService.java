@@ -25,9 +25,10 @@ public class AbilityService {
         log.info("能力调用开始");
         ApiConfig apiConfig = getApiConfig(comId, bNo, eid);
         IApiService apiService = apiServiceManager.getApiService(eid);
-        Object result = apiService.getResult(apiConfig, apiService.getParams(params));
-        log.info("能力调用结束：" + JSONUtil.toJsonStr(result));
-        return result;
+        Object result = apiService.process(apiConfig, apiService.getParams(params));
+        Object result2 = apiService.getResult(result);
+        log.info("能力调用结束：" + JSONUtil.toJsonStr(result2));
+        return result2;
     }
 
     private ApiConfig getApiConfig(String comId, String bNo, String eid) {
