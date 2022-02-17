@@ -6,6 +6,7 @@ import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.apiservice.IApiService;
 import com.example.demo.flowapi.config.ApiServiceManager;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +15,18 @@ import org.springframework.stereotype.Service;
  * @date 2022/2/16 15:13
  */
 @Service
+@Slf4j
 public class AbilityService {
     @Autowired
     private ApiServiceManager apiServiceManager;
 
     public Object process(String comId, String bNo, String eid, JSONObject params) {
         //获取配置
-        System.out.println("能力调用开始");
+        log.info("能力调用开始");
         ApiConfig apiConfig = getApiConfig(comId, bNo, eid);
         IApiService apiService = apiServiceManager.getApiService(eid);
         Object result = apiService.getResult(apiConfig, apiService.getParams(params));
-        System.out.println("能力调用结束：" + JSONUtil.toJsonStr(result));
+        log.info("能力调用结束：" + JSONUtil.toJsonStr(result));
         return result;
     }
 

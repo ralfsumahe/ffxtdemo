@@ -10,5 +10,5 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class CardStatusResult {
-    private String status;
+    private int status;
 }

@@ -6,6 +6,7 @@ import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.vo.CardStatusParam;
 import com.example.demo.flowapi.ability.vo.CardStatusResult;
 import com.example.demo.flowapi.api.MobileApi;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,14 +15,15 @@ import org.springframework.stereotype.Component;
  */
 @ApiDao(ebid = "ebid2", syncType = "移动")
 @Component
+@Slf4j
 public class CardStatusMobileApiDao implements IApiDao<CardStatusParam, CardStatusResult> {
     @Override
     public CardStatusResult process(ApiConfig apiConfig, CardStatusParam cardStatusParam) {
-        System.out.println("移动apidao执行开始");
-        System.out.println(String.format("参数：%s", JSONUtil.toJsonStr(cardStatusParam)));
+        log.info("移动apidao执行开始");
+        log.info(String.format("参数：%s", JSONUtil.toJsonStr(cardStatusParam)));
         JSONObject post = MobileApi.get(apiConfig, JSONUtil.parseObj(cardStatusParam));
-        CardStatusResult cardStatusResult = new CardStatusResult().setStatus((String) post.getByPath("data/sss"));
-        System.out.println("移动apidao执行结束:" + JSONUtil.toJsonStr(cardStatusResult));
+        CardStatusResult cardStatusResult = new CardStatusResult().setStatus((int) post.getByPath("data.sss"));
+        log.info("移动apidao执行结束:" + JSONUtil.toJsonStr(cardStatusResult));
         return cardStatusResult;
     }
 }

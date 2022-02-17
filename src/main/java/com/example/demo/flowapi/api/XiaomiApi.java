@@ -3,11 +3,13 @@ package com.example.demo.flowapi.api;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author linkun
  * @date 2022/2/16 15:33
  */
+@Slf4j
 public class XiaomiApi {
     public static JSONObject post(ApiConfig apiConfig, JSONObject param) {
         System.out.println("调用小米通用api接口获取开始");
@@ -19,7 +21,7 @@ public class XiaomiApi {
                 "        \"status\":1\n" +
                 "    }\n" +
                 "}";
-        System.out.println("调用小米通用api接口获取结束：" + result);
+        log.info("调用小米通用api接口获取结束：" + result);
         return JSONUtil.parseObj(result);
     }
 }
