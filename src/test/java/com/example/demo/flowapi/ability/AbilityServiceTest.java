@@ -34,7 +34,7 @@ public class AbilityServiceTest {
     public void after() throws Exception {
     }
 
-    @DisplayName("eib")
+    @DisplayName("eid")
     @Test
     public void test() {
         abilityService.process("comid", "bNo", "eid", JSONUtil.parseObj(

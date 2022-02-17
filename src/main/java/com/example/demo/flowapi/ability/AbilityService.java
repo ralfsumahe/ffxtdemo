@@ -35,7 +35,7 @@ public class AbilityService {
         ApiConfig apiConfig = new ApiConfig().setApiid("apiid")
                 .setApikey("apikey")
                 .setApiurl("apiurl")
-                .setEbid(eid)
+                .setEid(eid)
                 .setEcode("ecode")
                 .setEurl("eurl");
 

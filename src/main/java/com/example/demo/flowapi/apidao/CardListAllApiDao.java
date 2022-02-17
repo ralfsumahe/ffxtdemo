@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @author linkun
  * @date 2022/2/16 17:19
  */
-@ApiDao(ebid = "cardListEbid", syncType = "所有")
+@ApiDao(eid = "cardList", ebid = "cardListEbid", syncType = "所有")
 @Component
 public class CardListAllApiDao implements IApiDao<CardListParam, CardListResult> {
 

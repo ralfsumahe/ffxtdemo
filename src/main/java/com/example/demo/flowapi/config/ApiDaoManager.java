@@ -17,7 +17,7 @@ public class ApiDaoManager {
     public IApiDao getApiDao(ApiConfig apiConfig) {
         return applicationContext.getBeansOfType(IApiDao.class).values().stream().filter(iApiDao -> {
             ApiDao annotation = iApiDao.getClass().getAnnotation(ApiDao.class);
-            if (annotation.ebid().equals(apiConfig.getEbid())) {
+            if (annotation.ebid().equals(apiConfig.getEbid()) && annotation.eid().equals(apiConfig.getEid())) {
                 return true;
             }
             return false;
