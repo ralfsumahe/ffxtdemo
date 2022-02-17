@@ -1,6 +1,5 @@
 package com.example.demo.flowapi.apiservice;
 
-import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.apidao.IApiDao;
@@ -13,10 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2022/2/16 18:26
  */
 @Slf4j
-public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> {
+public abstract class BasePubApiService<P, R, R2> implements IApiService<P, R, R2> {
     @Autowired
     private ApiDaoManager apiDaoManager;
-
 
     /**
      * 获取api配置项
@@ -28,19 +26,9 @@ public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> 
      */
     @Override
     public ApiConfig getApiConfig(String comId, String bNo, String eid) {
-        ApiConfig apiConfig = new ApiConfig().setApiid("apiid")
-                .setApikey("apikey")
-                .setApiurl("apiurl")
+        ApiConfig apiConfig = new ApiConfig()
                 .setEid(eid)
-                .setEcode("ecode")
-                .setEurl("eurl");
-
-        String[] ebids = new String[]{"ebid1", "ebid2"};
-        if (eid.equals("eid")) {
-            apiConfig.setEbid(ebids[Math.abs(RandomUtil.getRandom().nextInt()) % 2]);
-        } else {
-            apiConfig.setEbid("cardListEbid");
-        }
+                .setEbid(eid);
 
         return apiConfig;
     }

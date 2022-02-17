@@ -9,6 +9,16 @@ import com.example.demo.flowapi.ApiConfig;
  */
 public interface IApiService<P, R, R2> {
     /**
+     * 获取api配置项
+     *
+     * @param comId
+     * @param bNo
+     * @param eid
+     * @return
+     */
+    public ApiConfig getApiConfig(String comId, String bNo, String eid);
+
+    /**
      * 将json转成参数
      *
      * @param jsonObject

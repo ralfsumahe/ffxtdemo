@@ -1,9 +1,7 @@
 package com.example.demo.flowapi.ability;
 
-import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.apiservice.IApiService;
 import com.example.demo.flowapi.config.ApiServiceManager;
 import lombok.extern.slf4j.Slf4j;
@@ -23,29 +21,10 @@ public class AbilityService {
     public Object process(String comId, String bNo, String eid, JSONObject params) {
         //获取配置
         log.info("能力调用开始");
-        ApiConfig apiConfig = getApiConfig(comId, bNo, eid);
         IApiService apiService = apiServiceManager.getApiService(eid);
-        Object result = apiService.process(apiConfig, apiService.getParams(params));
+        Object result = apiService.process(apiService.getApiConfig(comId, bNo, eid), apiService.getParams(params));
         Object result2 = apiService.getResult(result);
         log.info("能力调用结束：" + JSONUtil.toJsonStr(result2));
         return result2;
-    }
-
-    private ApiConfig getApiConfig(String comId, String bNo, String eid) {
-        ApiConfig apiConfig = new ApiConfig().setApiid("apiid")
-                .setApikey("apikey")
-                .setApiurl("apiurl")
-                .setEid(eid)
-                .setEcode("ecode")
-                .setEurl("eurl");
-
-        String[] ebids = new String[]{"ebid1", "ebid2"};
-        if (eid.equals("eid")) {
-            apiConfig.setEbid(ebids[Math.abs(RandomUtil.getRandom().nextInt()) % 2]);
-        } else {
-            apiConfig.setEbid("cardListEbid");
-        }
-
-        return apiConfig;
     }
 }
