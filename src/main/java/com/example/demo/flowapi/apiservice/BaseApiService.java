@@ -36,7 +36,9 @@ public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> 
                 .setEurl("eurl");
 
         String[] ebids = new String[]{"ebid1", "ebid2"};
-        if (eid.equals("eid")) {
+        if (eid.equals("cardList")) {
+            apiConfig.setEbid("cardList");
+        } else if (eid.equals("eid")) {
             apiConfig.setEbid(ebids[Math.abs(RandomUtil.getRandom().nextInt()) % 2]);
         } else {
             apiConfig.setEbid("cardListEbid");

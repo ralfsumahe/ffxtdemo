@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @ApiService(eid = "cardList", name = "卡列表查询")
 @Component
 @Slf4j
-public class CardListApiService extends BasePubApiService<CardListParam, CardListResult, CardListResult> {
+public class CardListApiService extends BaseApiService<CardListParam, CardListResult, CardListResult> {
 
     /**
      * 将json转成参数
