@@ -35,11 +35,11 @@ public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> 
                 .setEcode("ecode")
                 .setEurl("eurl");
 
-        String[] ebids = new String[]{"ebid1", "ebid2"};
+        String[] syncTypes = new String[]{"移动", "小米"};
         if (eid.equals("cardList")) {
-            apiConfig.setEbid("cardList");
+            apiConfig.setSyncType("自有");
         } else if (eid.equals("eid")) {
-            apiConfig.setEbid(ebids[Math.abs(RandomUtil.getRandom().nextInt()) % 2]);
+            apiConfig.setSyncType(syncTypes[RandomUtil.getRandom().nextInt(10000) % 2]);
         } else {
             apiConfig.setEbid("cardListEbid");
         }
@@ -57,10 +57,10 @@ public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> 
     @Override
     public R process(ApiConfig config, P p) {
         String name = this.getClass().getAnnotation(ApiService.class).name();
-        log.info(name + "调用开始");
+        log.info(name + "api调用开始");
         IApiDao apidao = apiDaoManager.getApiDao(config);
         R result = (R) apidao.process(config, p);
-        log.info(name + "调用结束" + JSONUtil.toJsonStr(result));
+        log.info(name + "api调用结束" + JSONUtil.toJsonStr(result));
         return result;
     }
 }

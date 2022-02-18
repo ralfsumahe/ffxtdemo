@@ -14,7 +14,5 @@ import java.lang.annotation.Target;
 public @interface ApiDao {
     String eid();
 
-    String ebid();
-
     String syncType();
 }

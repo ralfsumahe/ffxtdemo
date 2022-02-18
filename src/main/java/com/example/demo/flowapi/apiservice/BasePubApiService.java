@@ -28,7 +28,7 @@ public abstract class BasePubApiService<P, R, R2> implements IApiService<P, R, R
     public ApiConfig getApiConfig(String comId, String bNo, String eid) {
         ApiConfig apiConfig = new ApiConfig()
                 .setEid(eid)
-                .setEbid(eid);
+                .setSyncType("自有");
 
         return apiConfig;
     }

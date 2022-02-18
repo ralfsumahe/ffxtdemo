@@ -17,4 +17,5 @@ public class ApiConfig {
     private String apiurl;
     private String ecode;
     private String eurl;
+    private String syncType;
 }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @author linkun
  * @date 2022/2/16 16:07
  */
-@ApiDao(eid = "eid", ebid = "ebid2", syncType = "移动")
+@ApiDao(eid = "eid", syncType = "移动")
 @Component
 @Slf4j
 public class CardStatusMobileApiDao implements IApiDao<CardStatusParam, CardStatusResult> {
