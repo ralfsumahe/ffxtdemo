@@ -3,7 +3,7 @@ package com.example.demo.flowapi.apidao;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
-import com.example.demo.flowapi.ability.vo.CardListParam;
+import com.example.demo.flowapi.ability.dto.CardListParam;
 import com.example.demo.flowapi.ability.vo.CardListResult;
 import org.springframework.stereotype.Component;
 

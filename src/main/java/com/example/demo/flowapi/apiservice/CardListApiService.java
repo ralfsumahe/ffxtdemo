@@ -3,7 +3,7 @@ package com.example.demo.flowapi.apiservice;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
-import com.example.demo.flowapi.ability.vo.CardListParam;
+import com.example.demo.flowapi.ability.dto.CardListParam;
 import com.example.demo.flowapi.ability.vo.CardListResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

@@ -3,9 +3,9 @@ package com.example.demo.flowapi.apidao;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
-import com.example.demo.flowapi.ability.vo.CardStatusParam;
-import com.example.demo.flowapi.ability.vo.CardStatusResult;
+import com.example.demo.flowapi.ability.dto.CardStatusParam;
 import com.example.demo.flowapi.api.MobileApi;
+import com.example.demo.flowapi.apiservice.vo.CardStatusResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.example.demo.flowapi.ability.vo;
+package com.example.demo.flowapi.apiservice.vo;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -9,6 +9,6 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class CardStatusParam {
-    private String cNo;
+public class CardStatusResult {
+    private int status;
 }

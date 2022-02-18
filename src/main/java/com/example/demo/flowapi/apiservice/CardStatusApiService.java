@@ -2,9 +2,9 @@ package com.example.demo.flowapi.apiservice;
 
 import cn.hutool.json.JSONObject;
 import com.example.demo.flowapi.ApiConfig;
-import com.example.demo.flowapi.ability.vo.CardStatusParam;
-import com.example.demo.flowapi.ability.vo.CardStatusResult;
+import com.example.demo.flowapi.ability.dto.CardStatusParam;
 import com.example.demo.flowapi.ability.vo.CardStatusResult2;
+import com.example.demo.flowapi.apiservice.vo.CardStatusResult;
 import org.springframework.stereotype.Component;
 
 /**

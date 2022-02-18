@@ -1,6 +1,5 @@
 package com.example.demo.flowapi.apiservice;
 
-import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.apidao.IApiDao;
@@ -28,20 +27,14 @@ public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> 
      */
     @Override
     public ApiConfig getApiConfig(String comId, String bNo, String eid) {
-        ApiConfig apiConfig = new ApiConfig().setApiid("apiid")
-                .setApikey("apikey")
-                .setApiurl("apiurl")
-                .setEid(eid)
-                .setEcode("ecode")
-                .setEurl("eurl");
-
-        String[] syncTypes = new String[]{"移动", "小米"};
-        if (eid.equals("cardList")) {
-            apiConfig.setSyncType("自有");
-        } else if (eid.equals("eid")) {
-            apiConfig.setSyncType(syncTypes[RandomUtil.getRandom().nextInt(10000) % 2]);
+        ApiConfig apiConfig = new ApiConfig()
+                .setEid(eid);
+        if (comId.indexOf("小米") != -1) {
+            apiConfig.setSyncType("小米");
+        } else if (comId.indexOf("移动") != -1) {
+            apiConfig.setSyncType("移动");
         } else {
-            apiConfig.setEbid("cardListEbid");
+            apiConfig.setSyncType("默认");
         }
 
         return apiConfig;

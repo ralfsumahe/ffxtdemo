@@ -2,7 +2,8 @@ package com.example.demo.flowapi.ability;
 
 import cn.hutool.core.map.MapBuilder;
 import cn.hutool.json.JSONUtil;
-import com.example.demo.flowapi.ability.vo.CardListParam;
+import com.example.demo.flowapi.ability.dto.CNoParam;
+import com.example.demo.flowapi.ability.dto.CardListParam;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
@@ -37,7 +38,10 @@ public class AbilityServiceTest {
     @DisplayName("eid")
     @Test
     public void test() {
-        abilityService.process("comid", "bNo", "eid", JSONUtil.parseObj(
+        abilityService.process("福信富通_移动", "bNo", "eid", JSONUtil.parseObj(
+                MapBuilder.create().put("cNo", "cNo").build()));
+
+        abilityService.process("福信富通_小米", "bNo", "eid", JSONUtil.parseObj(
                 MapBuilder.create().put("cNo", "cNo").build()));
     }
 
@@ -52,6 +56,13 @@ public class AbilityServiceTest {
         cardListParam.setPage(1);
         cardListParam.setPageSize(20);
         abilityService.process("comid", "bNo", "cardList", JSONUtil.parseObj(cardListParam));
+    }
+
+    @DisplayName("location")
+    @Test
+    public void test3() {
+        CNoParam cNoParam = new CNoParam().setCNo("1064657376099");
+        abilityService.process("福信富通_小米卡", "bNo", "10002", JSONUtil.parseObj(cNoParam));
     }
 
 } 

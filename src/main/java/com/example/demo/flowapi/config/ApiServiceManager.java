@@ -5,6 +5,8 @@ import com.example.demo.flowapi.apiservice.IApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+import java.util.Optional;
+
 /**
  * @author linkun
  * @date 2022/2/16 15:23
@@ -15,12 +17,17 @@ public class ApiServiceManager {
 
     public IApiService getApiService(String eid) {
         //通过注解获取
-        return applicationContext.getBeansOfType(IApiService.class).values().stream().filter(iApiService -> {
+        Optional<IApiService> first = applicationContext.getBeansOfType(IApiService.class).values().stream().filter(iApiService -> {
             ApiService annotation = iApiService.getClass().getAnnotation(ApiService.class);
             if (annotation.eid().equals(eid)) {
                 return true;
             }
             return false;
-        }).findFirst().get();
+        }).findFirst();
+        if (!first.isPresent()) {
+            throw new RuntimeException(eid + "能力未实现");
+        }
+        return first.get();
     }
+
 }
