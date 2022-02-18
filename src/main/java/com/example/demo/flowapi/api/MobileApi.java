@@ -12,7 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MobileApi {
     public static JSONObject get(ApiConfig apiConfig, JSONObject param) {
-        System.out.println("调用移动api接口获取开始");
+        log.info("===");
+        log.info("调用移动api接口获取开始");
         String result = "{\n" +
                 "    \"code\": 10000,\n" +
                 "    \"msg\": \"成功\",\n" +
@@ -21,7 +22,8 @@ public class MobileApi {
                 "        \"sss\":1\n" +
                 "    }\n" +
                 "}";
-        log.info("调用移动api接口获取结束：" + result);
+        log.info("调用移动api接口获取结束：" + result.replaceAll("\\n", ""));
+        log.info("===");
         return JSONUtil.parseObj(result);
     }
 }

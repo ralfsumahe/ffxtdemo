@@ -1,6 +1,7 @@
 package com.example.demo.flowapi.apiservice;
 
 import cn.hutool.json.JSONObject;
+import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.vo.CardStatusParam;
 import com.example.demo.flowapi.ability.vo.CardStatusResult;
 import com.example.demo.flowapi.ability.vo.CardStatusResult2;
@@ -21,7 +22,7 @@ public class CardStatusApiService extends BaseApiService<CardStatusParam, CardSt
      * @return
      */
     @Override
-    public CardStatusParam getParams(JSONObject jsonObject) {
+    public CardStatusParam getParams(ApiConfig config, JSONObject jsonObject) {
         return new CardStatusParam().setCNo(jsonObject.getStr("cNo"));
     }
 
@@ -32,7 +33,7 @@ public class CardStatusApiService extends BaseApiService<CardStatusParam, CardSt
      * @return
      */
     @Override
-    public CardStatusResult2 getResult(CardStatusResult cardStatusResult) {
+    public CardStatusResult2 afterResult(CardStatusResult cardStatusResult) {
         if (cardStatusResult.getStatus() == 1) {
             return new CardStatusResult2().setStatus("成功");
         } else {

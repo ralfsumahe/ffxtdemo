@@ -57,10 +57,12 @@ public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> 
     @Override
     public R process(ApiConfig config, P p) {
         String name = this.getClass().getAnnotation(ApiService.class).name();
+        log.info("==");
         log.info(name + "api调用开始");
         IApiDao apidao = apiDaoManager.getApiDao(config);
         R result = (R) apidao.process(config, p);
         log.info(name + "api调用结束" + JSONUtil.toJsonStr(result));
+        log.info("==");
         return result;
     }
 }

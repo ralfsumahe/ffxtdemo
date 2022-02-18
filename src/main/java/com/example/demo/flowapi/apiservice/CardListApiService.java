@@ -2,6 +2,7 @@ package com.example.demo.flowapi.apiservice;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.vo.CardListParam;
 import com.example.demo.flowapi.ability.vo.CardListResult;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ public class CardListApiService extends BasePubApiService<CardListParam, CardLis
      * @return
      */
     @Override
-    public CardListParam getParams(JSONObject jsonObject) {
+    public CardListParam getParams(ApiConfig config, JSONObject jsonObject) {
         CardListParam cardListParam = JSONUtil.toBean(jsonObject, CardListParam.class);
         return cardListParam;
     }
@@ -35,7 +36,7 @@ public class CardListApiService extends BasePubApiService<CardListParam, CardLis
      * @return
      */
     @Override
-    public CardListResult getResult(CardListResult cardListResult) {
+    public CardListResult afterResult(CardListResult cardListResult) {
         log.info("结果修改");
         return cardListResult;
     }

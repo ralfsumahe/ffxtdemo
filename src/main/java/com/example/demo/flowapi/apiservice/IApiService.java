@@ -24,7 +24,7 @@ public interface IApiService<P, R, R2> {
      * @param jsonObject
      * @return
      */
-    P getParams(JSONObject jsonObject);
+    P getParams(ApiConfig config, JSONObject jsonObject);
 
     /**
      * 执行调用
@@ -41,6 +41,6 @@ public interface IApiService<P, R, R2> {
      * @param r
      * @return
      */
-    R2 getResult(R r);
+    R2 afterResult(R r);
 
 }
