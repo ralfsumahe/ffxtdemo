@@ -1,5 +1,6 @@
 package com.example.demo.flowapi;
 
+import com.example.demo.flowapi.config.BaseInfo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -18,4 +19,5 @@ public class ApiConfig {
     private String ecode;
     private String eurl;
     private String syncType;
+    private BaseInfo baseInfo;
 }

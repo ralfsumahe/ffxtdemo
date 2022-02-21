@@ -4,6 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.apidao.IApiDao;
 import com.example.demo.flowapi.config.ApiDaoManager;
+import com.example.demo.flowapi.config.BaseInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -36,6 +37,7 @@ public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> 
         } else {
             apiConfig.setSyncType("默认");
         }
+        apiConfig.setBaseInfo(new BaseInfo().setOtype("移动"));
 
         return apiConfig;
     }

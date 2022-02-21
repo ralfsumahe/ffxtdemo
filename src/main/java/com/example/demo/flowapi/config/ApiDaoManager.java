@@ -19,13 +19,19 @@ public class ApiDaoManager {
     public IApiDao getApiDao(ApiConfig apiConfig) {
         Optional<IApiDao> first = applicationContext.getBeansOfType(IApiDao.class).values().stream().filter(iApiDao -> {
             ApiDao annotation = iApiDao.getClass().getAnnotation(ApiDao.class);
-            if (annotation.syncType().equals(apiConfig.getSyncType()) && annotation.eid().equals(apiConfig.getEid())) {
-                return true;
-            }
-            return false;
+            return annotation.eid().equals(apiConfig.getEid()) && annotation.oType().equals(apiConfig.getBaseInfo().getOtype()) && annotation.syncType().equals(apiConfig.getSyncType());
         }).findFirst();
         if (!first.isPresent()) {
-            throw new RuntimeException(apiConfig.getEid() + "能力" + apiConfig.getSyncType() + "接口未实现");
+            first = applicationContext.getBeansOfType(IApiDao.class).values().stream().filter(iApiDao -> {
+                ApiDao annotation = iApiDao.getClass().getAnnotation(ApiDao.class);
+                return annotation.eid().equals(apiConfig.getEid()) && annotation.oType().equals(apiConfig.getBaseInfo().getOtype()) && annotation.syncType().equals("default");
+            }).findFirst();
+        }
+        if (!first.isPresent()) {
+            first = applicationContext.getBeansOfType(IApiDao.class).values().stream().filter(iApiDao -> {
+                ApiDao annotation = iApiDao.getClass().getAnnotation(ApiDao.class);
+                return annotation.eid().equals(apiConfig.getEid()) && annotation.oType().equals("default") && annotation.syncType().equals("default");
+            }).findFirst();
         }
         return first.get();
     }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @date 2022/2/18 15:20
  */
 @Component
-@ApiDao(eid = "10002", syncType = "小米")
+@ApiDao(eid = "10002", syncType = "小米", oType = "移动")
 public class LocationApiDao implements IApiDao<CNoParam, LocationResult> {
     @Override
     public LocationResult process(ApiConfig apiConfig, CNoParam cNoParam) {

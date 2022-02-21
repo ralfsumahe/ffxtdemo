@@ -4,6 +4,7 @@ import cn.hutool.core.map.MapBuilder;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ability.dto.CNoParam;
 import com.example.demo.flowapi.ability.dto.CardListParam;
+import com.example.demo.flowapi.ability.dto.RealNameAuthParam;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
@@ -63,6 +64,13 @@ public class AbilityServiceTest {
     public void test3() {
         CNoParam cNoParam = new CNoParam().setCNo("1064657376099");
         abilityService.process("福信富通_小米卡", "bNo", "10002", JSONUtil.parseObj(cNoParam));
+    }
+
+    @DisplayName("realnameauth")
+    @Test
+    public void test4() {
+        RealNameAuthParam param = new RealNameAuthParam().setStatus(1);
+        abilityService.process("福信富通_移动", "bNo", "30009", JSONUtil.parseObj(param));
     }
 
 } 
