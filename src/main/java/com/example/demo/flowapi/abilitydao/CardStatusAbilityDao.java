@@ -1,11 +1,11 @@
-package com.example.demo.flowapi.apiservice;
+package com.example.demo.flowapi.abilitydao;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.CardStatusParam;
 import com.example.demo.flowapi.ability.vo.CardStatusResult2;
-import com.example.demo.flowapi.apiservice.vo.CardStatusResult;
+import com.example.demo.flowapi.abilitydao.vo.CardStatusResult;
 import com.example.demo.flowapi.config.BaseInfo;
 import org.springframework.stereotype.Component;
 
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
  * @author linkun
  * @date 2022/2/16 15:09
  */
-@ApiService(eid = "eid", name = "卡状态查询服务")
+@AbilityDao(eid = "eid", name = "卡状态查询服务")
 @Component
-public class CardStatusApiService extends BaseApiService<CardStatusParam, CardStatusResult, CardStatusResult2> {
+public class CardStatusAbilityDao extends BaseAbilityDao<CardStatusParam, CardStatusResult, CardStatusResult2> {
 
     /**
      * 将json转成参数

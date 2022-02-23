@@ -1,7 +1,7 @@
 package com.example.demo.flowapi.config;
 
-import com.example.demo.flowapi.apiservice.ApiService;
-import com.example.demo.flowapi.apiservice.IApiService;
+import com.example.demo.flowapi.abilitydao.AbilityDao;
+import com.example.demo.flowapi.abilitydao.IAbilityDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -11,14 +11,14 @@ import java.util.Optional;
  * @author linkun
  * @date 2022/2/16 15:23
  */
-public class ApiServiceManager {
+public class AbilityDaoManager {
     @Autowired
     private ApplicationContext applicationContext;
 
-    public IApiService getApiService(String eid) {
+    public IAbilityDao getApiService(String eid) {
         //通过注解获取
-        Optional<IApiService> first = applicationContext.getBeansOfType(IApiService.class).values().stream().filter(iApiService -> {
-            ApiService annotation = iApiService.getClass().getAnnotation(ApiService.class);
+        Optional<IAbilityDao> first = applicationContext.getBeansOfType(IAbilityDao.class).values().stream().filter(iAbilityDao -> {
+            AbilityDao annotation = iAbilityDao.getClass().getAnnotation(AbilityDao.class);
             if (annotation.eid().equals(eid)) {
                 return true;
             }

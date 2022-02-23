@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FlowConfig {
     @Bean
-    public ApiServiceManager apiServiceManager() {
-        return new ApiServiceManager();
+    public AbilityDaoManager apiServiceManager() {
+        return new AbilityDaoManager();
     }
 
     @Bean

@@ -7,12 +7,14 @@ import java.lang.annotation.Target;
 
 /**
  * @author linkun
- * @date 2022/2/16 15:28
+ * @date 2022/2/16 15:43
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ApiService {
     String eid();
 
-    String name();
+    String oType();
+
+    String syncType();
 }

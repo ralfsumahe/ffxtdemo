@@ -1,4 +1,4 @@
-package com.example.demo.flowapi.apiservice;
+package com.example.demo.flowapi.abilitydao;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@ApiService(eid = "20021", name = "Gprs开停")
-public class GprsContrlApiService extends BaseApiService<GprsContrlParam, GprsContrlResult, GprsContrlResult> {
+@AbilityDao(eid = "20021", name = "Gprs开停")
+public class GprsContrlAbilityDao extends BaseAbilityDao<GprsContrlParam, GprsContrlResult, GprsContrlResult> {
     /**
      * 将json转成参数
      *

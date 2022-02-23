@@ -1,11 +1,11 @@
-package com.example.demo.flowapi.apidao;
+package com.example.demo.flowapi.apiservice;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.CardStatusParam;
+import com.example.demo.flowapi.abilitydao.vo.CardStatusResult;
 import com.example.demo.flowapi.api.XiaomiApi;
-import com.example.demo.flowapi.apiservice.vo.CardStatusResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
  * @author linkun
  * @date 2022/2/16 15:43
  */
-@ApiDao(eid = "eid", syncType = "小米", oType = "移动")
+@ApiService(eid = "eid", syncType = "小米", oType = "移动")
 @Component
 @Slf4j
-public class CardStatusXiaomiApiDao implements IApiDao<CardStatusParam, CardStatusResult> {
+public class CardStatusXiaomiApiService implements IApiService<CardStatusParam, CardStatusResult> {
 
     @Override
     public CardStatusResult process(ApiConfig apiConfig, CardStatusParam cardStatusParam) {

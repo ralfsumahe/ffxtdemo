@@ -1,4 +1,4 @@
-package com.example.demo.flowapi.apidao;
+package com.example.demo.flowapi.apiservice;
 
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
  * @author linkun
  * @date 2022/2/16 17:19
  */
-@ApiDao(eid = "cardList", syncType = "平台", oType = "平台")
+@ApiService(eid = "cardList", syncType = "平台", oType = "平台")
 @Component
-public class CardListAllApiDao implements IApiDao<CardListParam, CardListResult> {
+public class CardListAllApiService implements IApiService<CardListParam, CardListResult> {
 
     @Override
     public CardListResult process(ApiConfig apiConfig, CardListParam cardListParam) {

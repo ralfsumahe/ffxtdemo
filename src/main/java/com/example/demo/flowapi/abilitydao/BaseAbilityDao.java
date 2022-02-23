@@ -1,9 +1,9 @@
-package com.example.demo.flowapi.apiservice;
+package com.example.demo.flowapi.abilitydao;
 
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.BaseParam;
-import com.example.demo.flowapi.apidao.IApiDao;
+import com.example.demo.flowapi.apiservice.IApiService;
 import com.example.demo.flowapi.config.ApiDaoManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2022/2/16 18:26
  */
 @Slf4j
-public abstract class BaseApiService<P extends BaseParam, R, R2> implements IApiService<P, R, R2> {
+public abstract class BaseAbilityDao<P extends BaseParam, R, R2> implements IAbilityDao<P, R, R2> {
     @Autowired
     private ApiDaoManager apiDaoManager;
 
@@ -50,10 +50,10 @@ public abstract class BaseApiService<P extends BaseParam, R, R2> implements IApi
      */
     @Override
     public R process(ApiConfig config, P p) {
-        String name = this.getClass().getAnnotation(ApiService.class).name();
+        String name = this.getClass().getAnnotation(AbilityDao.class).name();
         log.info("==");
         log.info(name + "api调用开始");
-        IApiDao apidao = apiDaoManager.getApiDao(config, p);
+        IApiService apidao = apiDaoManager.getApiDao(config, p);
         R result = (R) apidao.process(config, p);
         log.info(name + "api调用结束" + JSONUtil.toJsonStr(result));
         log.info("==");

@@ -1,4 +1,4 @@
-package com.example.demo.flowapi.apiservice;
+package com.example.demo.flowapi.abilitydao;
 
 import cn.hutool.json.JSONObject;
 import com.example.demo.flowapi.ApiConfig;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
  * @date 2022/2/21 9:49
  */
 @Component
-@ApiService(eid = "30009", name = "实名认证审核")
-public class RealNameAuthApiService extends BaseApiService<RealNameAuthParam, RealNameAuthResult, RealNameAuthResult> {
+@AbilityDao(eid = "30009", name = "实名认证审核")
+public class RealNameAuthAbilityDao extends BaseAbilityDao<RealNameAuthParam, RealNameAuthResult, RealNameAuthResult> {
 
     /**
      * 将json转成参数

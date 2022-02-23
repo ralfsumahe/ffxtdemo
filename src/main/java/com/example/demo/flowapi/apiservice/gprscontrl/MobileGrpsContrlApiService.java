@@ -1,10 +1,10 @@
-package com.example.demo.flowapi.apidao.gprscontrl;
+package com.example.demo.flowapi.apiservice.gprscontrl;
 
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.GprsContrlParam;
 import com.example.demo.flowapi.ability.vo.GprsContrlResult;
-import com.example.demo.flowapi.apidao.ApiDao;
-import com.example.demo.flowapi.apidao.IApiDao;
+import com.example.demo.flowapi.apiservice.ApiService;
+import com.example.demo.flowapi.apiservice.IApiService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@ApiDao(eid = "20002", oType = "移动", syncType = "中移物联V5API")
-public class MobileGrpsContrlApiDao implements IApiDao<GprsContrlParam, GprsContrlResult> {
+@ApiService(eid = "20002", oType = "移动", syncType = "中移物联V5API")
+public class MobileGrpsContrlApiService implements IApiService<GprsContrlParam, GprsContrlResult> {
     @Override
     public GprsContrlResult process(ApiConfig apiConfig, GprsContrlParam gprsContrlParam) {
         log.info("调用移动-中移物联V5API gprs开停接口");

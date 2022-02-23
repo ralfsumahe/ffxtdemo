@@ -1,4 +1,4 @@
-package com.example.demo.flowapi.apiservice.vo;
+package com.example.demo.flowapi.abilitydao.vo;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

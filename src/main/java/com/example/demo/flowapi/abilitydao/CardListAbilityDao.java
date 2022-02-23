@@ -1,4 +1,4 @@
-package com.example.demo.flowapi.apiservice;
+package com.example.demo.flowapi.abilitydao;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
  * @author linkun
  * @date 2022/2/16 16:56
  */
-@ApiService(eid = "cardList", name = "卡列表查询")
+@AbilityDao(eid = "cardList", name = "卡列表查询")
 @Component
 @Slf4j
-public class CardListApiService extends BasePubApiService<CardListParam, CardListResult, CardListResult> {
+public class CardListAbilityDao extends BasePubAbilityDao<CardListParam, CardListResult, CardListResult> {
 
     /**
      * 将json转成参数
