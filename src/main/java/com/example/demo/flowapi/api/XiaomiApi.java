@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class XiaomiApi {
     public static JSONObject post(ApiConfig apiConfig, JSONObject param) {
-        log.info("===");
+        log.info("====");
         log.info("调用小米通用api接口获取开始");
         String result = "{\n" +
                 "    \"code\": 10000,\n" +
@@ -23,7 +23,7 @@ public class XiaomiApi {
                 "    }\n" +
                 "}";
         log.info("调用小米通用api接口获取结束：" + result.replaceAll("\\n", ""));
-        log.info("===");
+        log.info("====");
         return JSONUtil.parseObj(result);
     }
 }
