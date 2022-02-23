@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
-public class CardListParam {
+public class CardListParam extends BaseParam {
     private String comId;
     private String bNo;
     private Date begin;

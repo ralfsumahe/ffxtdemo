@@ -4,6 +4,7 @@ import cn.hutool.json.JSONObject;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.RealNameAuthParam;
 import com.example.demo.flowapi.ability.vo.RealNameAuthResult;
+import com.example.demo.flowapi.config.BaseInfo;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,6 +25,7 @@ public class RealNameAuthApiService extends BaseApiService<RealNameAuthParam, Re
     @Override
     public RealNameAuthParam getParams(ApiConfig config, JSONObject jsonObject) {
         RealNameAuthParam realNameAuthParam = jsonObject.toBean(RealNameAuthParam.class);
+        realNameAuthParam.setBaseInfo(new BaseInfo().setOtype("移动"));
         return realNameAuthParam;
     }
 

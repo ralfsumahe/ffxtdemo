@@ -29,7 +29,7 @@ public class RealNameAuthMobileApiDao implements IApiDao<RealNameAuthParam, Real
         log.info("调用移动gps接口");
         apiConfig.setEid("20002");
         apiConfig.setSyncType("中移物联V5API");
-        IApiDao apiDao = apiDaoManager.getApiDao(apiConfig);
+        IApiDao apiDao = apiDaoManager.getApiDao(apiConfig, realNameAuthParam);
         GprsContrlResult gprsContrlResult = (GprsContrlResult) apiDao.process(apiConfig, new GprsContrlParam());
         return new RealNameAuthResult();
     }

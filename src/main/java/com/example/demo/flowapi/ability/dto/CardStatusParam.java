@@ -9,6 +9,6 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class CardStatusParam {
+public class CardStatusParam extends BaseParam {
     private String cNo;
 }

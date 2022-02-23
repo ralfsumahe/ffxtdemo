@@ -1,10 +1,12 @@
 package com.example.demo.flowapi.apiservice;
 
 import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.CardStatusParam;
 import com.example.demo.flowapi.ability.vo.CardStatusResult2;
 import com.example.demo.flowapi.apiservice.vo.CardStatusResult;
+import com.example.demo.flowapi.config.BaseInfo;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,7 +25,9 @@ public class CardStatusApiService extends BaseApiService<CardStatusParam, CardSt
      */
     @Override
     public CardStatusParam getParams(ApiConfig config, JSONObject jsonObject) {
-        return new CardStatusParam().setCNo(jsonObject.getStr("cNo"));
+        CardStatusParam cardStatusParam = JSONUtil.toBean(jsonObject, CardStatusParam.class);
+        cardStatusParam.setBaseInfo(new BaseInfo().setOtype("移动"));
+        return cardStatusParam;
     }
 
     /**

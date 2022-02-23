@@ -2,12 +2,13 @@ package com.example.demo.flowapi.apiservice;
 
 import cn.hutool.json.JSONObject;
 import com.example.demo.flowapi.ApiConfig;
+import com.example.demo.flowapi.ability.dto.BaseParam;
 
 /**
  * @author linkun
  * @date 2022/2/16 15:05
  */
-public interface IApiService<P, R, R2> {
+public interface IApiService<P extends BaseParam, R, R2> {
     /**
      * 获取api配置项
      *

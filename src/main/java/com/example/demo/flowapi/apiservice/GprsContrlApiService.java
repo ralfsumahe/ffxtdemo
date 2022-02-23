@@ -5,6 +5,7 @@ import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.GprsContrlParam;
 import com.example.demo.flowapi.ability.vo.GprsContrlResult;
+import com.example.demo.flowapi.config.BaseInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +26,9 @@ public class GprsContrlApiService extends BaseApiService<GprsContrlParam, GprsCo
      */
     @Override
     public GprsContrlParam getParams(ApiConfig config, JSONObject jsonObject) {
-        return JSONUtil.toBean(jsonObject, GprsContrlParam.class);
+        GprsContrlParam gprsContrlParam = JSONUtil.toBean(jsonObject, GprsContrlParam.class);
+        gprsContrlParam.setBaseInfo(new BaseInfo().setOtype("移动"));
+        return gprsContrlParam;
     }
 
     /**

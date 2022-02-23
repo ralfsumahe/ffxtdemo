@@ -9,6 +9,6 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class CNoParam {
+public class CNoParam extends BaseParam {
     private String cNo;
 }

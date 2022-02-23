@@ -5,6 +5,7 @@ import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.CardListParam;
 import com.example.demo.flowapi.ability.vo.CardListResult;
+import com.example.demo.flowapi.config.BaseInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,7 @@ public class CardListApiService extends BasePubApiService<CardListParam, CardLis
     @Override
     public CardListParam getParams(ApiConfig config, JSONObject jsonObject) {
         CardListParam cardListParam = JSONUtil.toBean(jsonObject, CardListParam.class);
+        cardListParam.setBaseInfo(new BaseInfo().setOtype("平台"));
         return cardListParam;
     }
 

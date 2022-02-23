@@ -2,9 +2,9 @@ package com.example.demo.flowapi.apiservice;
 
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
+import com.example.demo.flowapi.ability.dto.BaseParam;
 import com.example.demo.flowapi.apidao.IApiDao;
 import com.example.demo.flowapi.config.ApiDaoManager;
-import com.example.demo.flowapi.config.BaseInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2022/2/16 18:26
  */
 @Slf4j
-public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> {
+public abstract class BaseApiService<P extends BaseParam, R, R2> implements IApiService<P, R, R2> {
     @Autowired
     private ApiDaoManager apiDaoManager;
 
@@ -37,7 +37,6 @@ public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> 
         } else {
             apiConfig.setSyncType("默认");
         }
-        apiConfig.setBaseInfo(new BaseInfo().setOtype("移动"));
 
         return apiConfig;
     }
@@ -54,7 +53,7 @@ public abstract class BaseApiService<P, R, R2> implements IApiService<P, R, R2> 
         String name = this.getClass().getAnnotation(ApiService.class).name();
         log.info("==");
         log.info(name + "api调用开始");
-        IApiDao apidao = apiDaoManager.getApiDao(config);
+        IApiDao apidao = apiDaoManager.getApiDao(config, p);
         R result = (R) apidao.process(config, p);
         log.info(name + "api调用结束" + JSONUtil.toJsonStr(result));
         log.info("==");
