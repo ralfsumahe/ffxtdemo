@@ -3,7 +3,7 @@ package com.example.demo.flowapi.apiservice;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
-import com.example.demo.flowapi.ability.dto.CNoParam;
+import com.example.demo.flowapi.ability.dto.LocationParam;
 import com.example.demo.flowapi.ability.vo.LocationResult;
 import com.example.demo.flowapi.config.BaseInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ApiService(eid = "10002", name = "卡位置定位")
 @Slf4j
-public class LocationApiService extends BaseApiService<CNoParam, LocationResult, LocationResult> {
+public class LocationApiService extends BaseApiService<LocationParam, LocationResult, LocationResult> {
     /**
      * 将json转成参数
      *
@@ -25,11 +25,15 @@ public class LocationApiService extends BaseApiService<CNoParam, LocationResult,
      * @return
      */
     @Override
-    public CNoParam getParams(ApiConfig config, JSONObject jsonObject) {
+    public LocationParam getParams(ApiConfig config, JSONObject jsonObject) {
+        LocationParam locationParam = JSONUtil.toBean(jsonObject, LocationParam.class);
+        locationParam.setBaseInfo(new BaseInfo().setOtype("移动"));
         log.info("获取剩余定位次数");
-        CNoParam cNoParam = JSONUtil.toBean(jsonObject, CNoParam.class);
-        cNoParam.setBaseInfo(new BaseInfo().setOtype("移动"));
-        return cNoParam;
+        locationParam.setLeaveTimes(1);
+        if (locationParam.getLeaveTimes() <= 0) {
+            throw new RuntimeException("定位次数已经用尽！");
+        }
+        return locationParam;
     }
 
     /**
