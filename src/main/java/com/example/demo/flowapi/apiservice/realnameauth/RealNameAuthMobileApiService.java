@@ -7,7 +7,7 @@ import com.example.demo.flowapi.ability.vo.GprsContrlResult;
 import com.example.demo.flowapi.ability.vo.RealNameAuthResult;
 import com.example.demo.flowapi.apiservice.ApiService;
 import com.example.demo.flowapi.apiservice.IApiService;
-import com.example.demo.flowapi.config.ApiDaoManager;
+import com.example.demo.flowapi.config.ApiServiceManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RealNameAuthMobileApiService implements IApiService<RealNameAuthParam, RealNameAuthResult> {
     @Autowired
-    private ApiDaoManager apiDaoManager;
+    private ApiServiceManager apiServiceManager;
 
     @Override
     public RealNameAuthResult process(ApiConfig apiConfig, RealNameAuthParam realNameAuthParam) {
@@ -29,7 +29,7 @@ public class RealNameAuthMobileApiService implements IApiService<RealNameAuthPar
         log.info("调用移动gps接口");
         apiConfig.setEid("20002");
         apiConfig.setSyncType("中移物联V5API");
-        IApiService apiDao = apiDaoManager.getApiDao(apiConfig, realNameAuthParam);
+        IApiService apiDao = apiServiceManager.getApiDao(apiConfig, realNameAuthParam);
         GprsContrlResult gprsContrlResult = (GprsContrlResult) apiDao.process(apiConfig, new GprsContrlParam());
         return new RealNameAuthResult();
     }

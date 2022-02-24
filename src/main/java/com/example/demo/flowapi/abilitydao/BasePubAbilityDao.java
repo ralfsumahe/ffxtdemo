@@ -4,7 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.BaseParam;
 import com.example.demo.flowapi.apiservice.IApiService;
-import com.example.demo.flowapi.config.ApiDaoManager;
+import com.example.demo.flowapi.config.ApiServiceManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Slf4j
 public abstract class BasePubAbilityDao<P extends BaseParam, R, R2> implements IAbilityDao<P, R, R2> {
     @Autowired
-    private ApiDaoManager apiDaoManager;
+    private ApiServiceManager apiServiceManager;
 
     /**
      * 获取api配置项
@@ -45,7 +45,7 @@ public abstract class BasePubAbilityDao<P extends BaseParam, R, R2> implements I
     public R process(ApiConfig config, P p) {
         String name = this.getClass().getAnnotation(AbilityDao.class).name();
         log.info(name + "调用开始");
-        IApiService apidao = apiDaoManager.getApiDao(config, p);
+        IApiService apidao = apiServiceManager.getApiDao(config, p);
         R result = (R) apidao.process(config, p);
         log.info(name + "调用结束" + JSONUtil.toJsonStr(result));
         return result;

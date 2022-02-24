@@ -15,8 +15,8 @@ public class FlowConfig {
     }
 
     @Bean
-    public ApiDaoManager apiDaoManager() {
-        return new ApiDaoManager();
+    public ApiServiceManager apiDaoManager() {
+        return new ApiServiceManager();
     }
 
 }

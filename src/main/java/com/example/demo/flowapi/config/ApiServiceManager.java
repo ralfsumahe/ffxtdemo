@@ -13,7 +13,7 @@ import java.util.Optional;
  * @author linkun
  * @date 2022/2/16 15:50
  */
-public class ApiDaoManager {
+public class ApiServiceManager {
     @Autowired
     private ApplicationContext applicationContext;
 

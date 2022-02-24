@@ -4,7 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.example.demo.flowapi.ApiConfig;
 import com.example.demo.flowapi.ability.dto.CardStatusParam;
 import com.example.demo.flowapi.abilitydao.vo.CardStatusResult;
-import com.example.demo.flowapi.apidao.xiaomi.XiaomiApiDao;
+import com.example.demo.flowapi.apidao.xiaomi.CardStatusXiaomiApiDao;
 import com.example.demo.flowapi.apidao.xiaomi.dto.XiaomiCardStatusDto;
 import com.example.demo.flowapi.apidao.xiaomi.vo.XiaomiCardStatusVo;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class CardStatusXiaomiApiService implements IApiService<CardStatusParam, CardStatusResult> {
     @Autowired
-    private XiaomiApiDao dao;
+    private CardStatusXiaomiApiDao dao;
 
     @Override
     public CardStatusResult process(ApiConfig apiConfig, CardStatusParam cardStatusParam) {

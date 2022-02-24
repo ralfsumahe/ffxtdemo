@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class XiaomiApiDao {
+public class CardStatusXiaomiApiDao {
 
     public XiaomiCardStatusVo cardStatus(ApiConfig apiConfig, XiaomiCardStatusDto dto) {
         log.info("===");
